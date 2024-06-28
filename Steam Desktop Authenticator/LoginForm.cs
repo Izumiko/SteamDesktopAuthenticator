@@ -77,7 +77,7 @@ namespace Steam_Desktop_Authenticator
             string password = txtPassword.Text;
 
             // Start a new SteamClient instance
-            SteamClient steamClient = new SteamClient();
+            var steamClient = new SteamClient();
 
             // Connect to Steam
             steamClient.Connect();
@@ -159,7 +159,7 @@ namespace Steam_Desktop_Authenticator
             }
 
             // Begin linking mobile authenticator
-            AuthenticatorLinker linker = new AuthenticatorLinker(sessionData);
+            var linker = new AuthenticatorLinker(sessionData);
 
             AuthenticatorLinker.LinkResult linkResponse = AuthenticatorLinker.LinkResult.GeneralFailure;
             while (linkResponse != AuthenticatorLinker.LinkResult.AwaitingFinalization)
@@ -180,7 +180,7 @@ namespace Steam_Desktop_Authenticator
                     case AuthenticatorLinker.LinkResult.MustProvidePhoneNumber:
 
                         // Show the phone input form
-                        PhoneInputForm phoneInputForm = new PhoneInputForm(account);
+                        var phoneInputForm = new PhoneInputForm(account);
                         phoneInputForm.ShowDialog();
                         if (phoneInputForm.Canceled)
                         {
@@ -228,7 +228,7 @@ namespace Steam_Desktop_Authenticator
                 bool passKeyValid = false;
                 while (!passKeyValid)
                 {
-                    InputForm passKeyForm = new InputForm("Please enter your current encryption passkey.");
+                    var passKeyForm = new InputForm("Please enter your current encryption passkey.");
                     passKeyForm.ShowDialog();
                     if (!passKeyForm.Canceled)
                     {
@@ -261,7 +261,7 @@ namespace Steam_Desktop_Authenticator
             AuthenticatorLinker.FinalizeResult finalizeResponse = AuthenticatorLinker.FinalizeResult.GeneralFailure;
             while (finalizeResponse != AuthenticatorLinker.FinalizeResult.Success)
             {
-                InputForm smsCodeForm = new InputForm("Please input the SMS code sent to your phone.");
+                var smsCodeForm = new InputForm("Please input the SMS code sent to your phone.");
                 smsCodeForm.ShowDialog();
                 if (smsCodeForm.Canceled)
                 {
@@ -270,7 +270,7 @@ namespace Steam_Desktop_Authenticator
                     return;
                 }
 
-                InputForm confirmRevocationCode = new InputForm("Please enter your revocation code to ensure you've saved it.");
+                var confirmRevocationCode = new InputForm("Please enter your revocation code to ensure you've saved it.");
                 confirmRevocationCode.ShowDialog();
                 if (confirmRevocationCode.txtBox.Text.ToUpper() != linker.LinkedAccount.RevocationCode)
                 {
@@ -320,7 +320,7 @@ namespace Steam_Desktop_Authenticator
                 bool passKeyValid = false;
                 while (!passKeyValid)
                 {
-                    InputForm passKeyForm = new InputForm("Please enter your current encryption passkey.");
+                    var passKeyForm = new InputForm("Please enter your current encryption passkey.");
                     passKeyForm.ShowDialog();
                     if (!passKeyForm.Canceled)
                     {

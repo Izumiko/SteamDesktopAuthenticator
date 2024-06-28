@@ -5,15 +5,10 @@ using System.Windows.Forms;
 
 namespace Steam_Desktop_Authenticator
 {
-    internal class UserFormAuthenticator : IAuthenticator
+    internal class UserFormAuthenticator(SteamGuardAccount account) : IAuthenticator
     {
-        private SteamGuardAccount account;
+        private SteamGuardAccount account = account;
         private int deviceCodesGenerated = 0;
-
-        public UserFormAuthenticator(SteamGuardAccount account)
-        {
-            this.account = account;
-        }
 
         public Task<bool> AcceptDeviceConfirmationAsync()
         {
@@ -56,7 +51,7 @@ namespace Steam_Desktop_Authenticator
                 message = "The code you provided was invalid. Enter the code sent to your email:";
             }
 
-            InputForm emailForm = new InputForm(message);
+            var emailForm = new InputForm(message);
             emailForm.ShowDialog();
             return Task.FromResult(emailForm.txtBox.Text);
         }

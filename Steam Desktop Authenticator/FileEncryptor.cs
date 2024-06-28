@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Security.Cryptography;
 using System.IO;
+using System.Text;
 
 namespace Steam_Desktop_Authenticator
 {
@@ -25,118 +22,96 @@ namespace Steam_Desktop_Authenticator
         /// <summary>
         /// Returns an 8-byte cryptographically random salt in base64 encoding
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A base64 encoded string representing the random salt</returns>
         public static string GetRandomSalt()
         {
-            byte[] salt = new byte[SALT_LENGTH];
-            using (RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider())
-            {
-                rng.GetBytes(salt);
-            }
+            byte[] salt = RandomNumberGenerator.GetBytes(SALT_LENGTH);
             return Convert.ToBase64String(salt);
         }
 
         /// <summary>
         /// Returns a 16-byte cryptographically random initialization vector (IV) in base64 encoding
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A base64 encoded string representing the random initialization vector</returns>
         public static string GetInitializationVector()
         {
-            byte[] IV = new byte[IV_LENGTH];
-            using (RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider())
-            {
-                rng.GetBytes(IV);
-            }
+            byte[] IV = RandomNumberGenerator.GetBytes(IV_LENGTH);
             return Convert.ToBase64String(IV);
         }
 
 
         /// <summary>
         /// Generates an encryption key derived using a password, a random salt, and specified number of rounds of PBKDF2
-        /// 
-        /// TODO: pass in password via SecureString?
         /// </summary>
-        /// <param name="password"></param>
-        /// <param name="salt"></param>
-        /// <returns></returns>
+        /// <param name="password">The password to derive the key from</param>
+        /// <param name="salt">The salt as a base64 encoded string</param>
+        /// <returns>A byte array representing the derived encryption key</returns>
+        /// <exception cref="ArgumentException">Thrown when password or salt is null or empty</exception>
         private static byte[] GetEncryptionKey(string password, string salt)
         {
             if (string.IsNullOrEmpty(password))
             {
-                throw new ArgumentException("Password is empty");
+                throw new ArgumentException("Password is empty", nameof(password));
             }
             if (string.IsNullOrEmpty(salt))
             {
-                throw new ArgumentException("Salt is empty");
+                throw new ArgumentException("Salt is empty", nameof(salt));
             }
-            using (Rfc2898DeriveBytes pbkdf2 = new Rfc2898DeriveBytes(password, Convert.FromBase64String(salt), PBKDF2_ITERATIONS))
-            {
-                return pbkdf2.GetBytes(KEY_SIZE_BYTES);
-            }
+
+            byte[] saltBytes = Convert.FromBase64String(salt);
+            return Rfc2898DeriveBytes.Pbkdf2(
+                password,
+                saltBytes,
+                PBKDF2_ITERATIONS,
+                HashAlgorithmName.SHA256,
+                KEY_SIZE_BYTES);
         }
 
         /// <summary>
         /// Tries to decrypt and return data given an encrypted base64 encoded string. Must use the same
         /// password, salt, IV, and ciphertext that was used during the original encryption of the data.
         /// </summary>
-        /// <param name="password"></param>
-        /// <param name="passwordSalt"></param>
-        /// <param name="IV">Initialization Vector</param>
-        /// <param name="encryptedData"></param>
-        /// <returns></returns>
-        public static string DecryptData(string password, string passwordSalt, string IV, string encryptedData)
+        /// <param name="password">The password used for encryption</param>
+        /// <param name="passwordSalt">The salt used for key derivation</param>
+        /// <param name="iv">Initialization Vector</param>
+        /// <param name="encryptedData">The encrypted data as a base64 encoded string</param>
+        /// <returns>The decrypted string, or null if decryption fails</returns>
+        /// <exception cref="ArgumentException">Thrown when any input parameter is null or empty</exception>
+        public static string DecryptData(string password, string passwordSalt, string iv, string encryptedData)
         {
             if (string.IsNullOrEmpty(password))
-            {
-                throw new ArgumentException("Password is empty");
-            }
+                throw new ArgumentException("Password is empty", nameof(password));
             if (string.IsNullOrEmpty(passwordSalt))
-            {
-                throw new ArgumentException("Salt is empty");
-            }
-            if (string.IsNullOrEmpty(IV))
-            {
-                throw new ArgumentException("Initialization Vector is empty");
-            }
+                throw new ArgumentException("Salt is empty", nameof(passwordSalt));
+            if (string.IsNullOrEmpty(iv))
+                throw new ArgumentException("Initialization Vector is empty", nameof(iv));
             if (string.IsNullOrEmpty(encryptedData))
-            {
-                throw new ArgumentException("Encrypted data is empty");
-            }
+                throw new ArgumentException("Encrypted data is empty", nameof(encryptedData));
+
 
             byte[] cipherText = Convert.FromBase64String(encryptedData);
             byte[] key = GetEncryptionKey(password, passwordSalt);
-            string plaintext = null;
+            byte[] ivBytes = Convert.FromBase64String(iv);
 
-            using (RijndaelManaged aes256 = new RijndaelManaged())
+            try
             {
-                aes256.IV = Convert.FromBase64String(IV);
-                aes256.Key = key;
-                aes256.Padding = PaddingMode.PKCS7;
-                aes256.Mode = CipherMode.CBC;
+                using var aes = Aes.Create();
+                aes.Key = key;
+                aes.IV = ivBytes;
+                aes.Mode = CipherMode.CBC;
+                aes.Padding = PaddingMode.PKCS7;
 
-                //create decryptor to perform the stream transform
-                ICryptoTransform decryptor = aes256.CreateDecryptor(aes256.Key, aes256.IV);
+                using var decryptor = aes.CreateDecryptor(aes.Key, aes.IV);
+                using var msDecrypt = new MemoryStream(cipherText);
+                using var csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read);
+                using var srDecrypt = new StreamReader(csDecrypt, Encoding.UTF8);
 
-                //wrap in a try since a bad password yields a bad key, which would throw an exception on decrypt
-                try
-                {
-                    using (MemoryStream msDecrypt = new MemoryStream(cipherText))
-                    {
-                        using (CryptoStream csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read))
-                        {
-                            using (StreamReader srDecrypt = new StreamReader(csDecrypt))
-                            {
-                                plaintext = srDecrypt.ReadToEnd();
-                            }
-                        }
-                    }
-                }
-                catch (CryptographicException)
-                {
-                    plaintext = null;
-                }
+                return srDecrypt.ReadToEnd();
             }
-            return plaintext;
+            catch (CryptographicException)
+            {
+                return null;
+            }
         }
 
         /// <summary>
@@ -144,53 +119,41 @@ namespace Steam_Desktop_Authenticator
         /// 
         /// To retrieve this data, you must decrypt with the same password, salt, IV, and cyphertext that was used during encryption
         /// </summary>
-        /// <param name="password"></param>
-        /// <param name="passwordSalt"></param>
-        /// <param name="IV"></param>
-        /// <param name="plaintext"></param>
-        /// <returns></returns>
-        public static string EncryptData(string password, string passwordSalt, string IV, string plaintext)
+        /// <param name="password">The password used for encryption</param>
+        /// <param name="passwordSalt">The salt used for key derivation</param>
+        /// <param name="iv">Initialization Vector</param>
+        /// <param name="plaintext">The text to be encrypted</param>
+        /// <returns>The encrypted data as a base64 encoded string</returns>
+        /// <exception cref="ArgumentException">Thrown when any input parameter is null or empty</exception>
+        public static string EncryptData(string password, string passwordSalt, string iv, string plaintext)
         {
             if (string.IsNullOrEmpty(password))
-            {
-                throw new ArgumentException("Password is empty");
-            }
+                throw new ArgumentException("Password is empty", nameof(password));
             if (string.IsNullOrEmpty(passwordSalt))
-            {
-                throw new ArgumentException("Salt is empty");
-            }
-            if (string.IsNullOrEmpty(IV))
-            {
-                throw new ArgumentException("Initialization Vector is empty");
-            }
+                throw new ArgumentException("Salt is empty", nameof(passwordSalt));
+            if (string.IsNullOrEmpty(iv))
+                throw new ArgumentException("Initialization Vector is empty", nameof(iv));
             if (string.IsNullOrEmpty(plaintext))
-            {
-                throw new ArgumentException("Plaintext data is empty");
-            }
+                throw new ArgumentException("Plaintext data is empty", nameof(plaintext));
+
             byte[] key = GetEncryptionKey(password, passwordSalt);
-            byte[] ciphertext;
+            byte[] ivBytes = Convert.FromBase64String(iv);
 
-            using (RijndaelManaged aes256 = new RijndaelManaged())
+            using var aes = Aes.Create();
+            aes.Key = key;
+            aes.IV = ivBytes;
+            aes.Mode = CipherMode.CBC;
+            aes.Padding = PaddingMode.PKCS7;
+
+            using var encryptor = aes.CreateEncryptor(aes.Key, aes.IV);
+            using var msEncrypt = new MemoryStream();
+            using var csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write);
+            using (var swEncrypt = new StreamWriter(csEncrypt, Encoding.UTF8))
             {
-                aes256.Key = key;
-                aes256.IV = Convert.FromBase64String(IV);
-                aes256.Padding = PaddingMode.PKCS7;
-                aes256.Mode = CipherMode.CBC;
-
-                ICryptoTransform encryptor = aes256.CreateEncryptor(aes256.Key, aes256.IV);
-
-                using (MemoryStream msEncrypt = new MemoryStream())
-                {
-                    using (CryptoStream csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write))
-                    {
-                        using (StreamWriter swEncypt = new StreamWriter(csEncrypt))
-                        {
-                            swEncypt.Write(plaintext);
-                        }
-                        ciphertext = msEncrypt.ToArray();
-                    }
-                }
+                swEncrypt.Write(plaintext);
             }
+
+            byte[] ciphertext = msEncrypt.ToArray();
             return Convert.ToBase64String(ciphertext);
         }
     }

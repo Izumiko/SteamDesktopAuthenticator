@@ -50,29 +50,29 @@ namespace Steam_Desktop_Authenticator
 
                 if (confirmations == null || confirmations.Length == 0)
                 {
-                    Label errorLabel = new Label() { Text = "Nothing to confirm/cancel", AutoSize = true, ForeColor = Color.Black, Location = new Point(150, 20) };
+                    var errorLabel = new Label() { Text = "Nothing to confirm/cancel", AutoSize = true, ForeColor = Color.Black, Location = new Point(150, 20) };
                     this.splitContainer1.Panel2.Controls.Add(errorLabel);
                 }
 
                 foreach (var confirmation in confirmations)
                 {
-                    Panel panel = new Panel() { Dock = DockStyle.Top, Height = 120 };
+                    var panel = new Panel() { Dock = DockStyle.Top, Height = 120 };
                     panel.Paint += (s, e) =>
                     {
-                        using (LinearGradientBrush brush = new LinearGradientBrush(panel.ClientRectangle, Color.Black, Color.DarkCyan, 90F))
+                        using (var brush = new LinearGradientBrush(panel.ClientRectangle, Color.Black, Color.DarkCyan, 90F))
                         {
                             e.Graphics.FillRectangle(brush, panel.ClientRectangle);
                         }
                     };
-                    
+
                     if (!string.IsNullOrEmpty(confirmation.Icon))
                     {
-                       PictureBox pictureBox = new PictureBox() { Width = 60, Height = 60, Location = new Point(20, 20), SizeMode = PictureBoxSizeMode.Zoom };
-                       pictureBox.Load(confirmation.Icon);
-                       panel.Controls.Add(pictureBox);
+                        var pictureBox = new PictureBox() { Width = 60, Height = 60, Location = new Point(20, 20), SizeMode = PictureBoxSizeMode.Zoom };
+                        pictureBox.Load(confirmation.Icon);
+                        panel.Controls.Add(pictureBox);
                     }
 
-                    Label nameLabel = new Label()
+                    var nameLabel = new Label()
                     {
                         Text = $"{confirmation.Headline}\n{confirmation.Creator.ToString()}",
                         AutoSize = true,
@@ -82,7 +82,7 @@ namespace Steam_Desktop_Authenticator
                     };
                     panel.Controls.Add(nameLabel);
 
-                    ConfirmationButton acceptButton = new ConfirmationButton()
+                    var acceptButton = new ConfirmationButton()
                     {
                         Text = confirmation.Accept,
                         Location = new Point(90, 50),
@@ -95,7 +95,7 @@ namespace Steam_Desktop_Authenticator
                     acceptButton.Click += btnAccept_Click;
                     panel.Controls.Add(acceptButton);
 
-                    ConfirmationButton cancelButton = new ConfirmationButton()
+                    var cancelButton = new ConfirmationButton()
                     {
                         Text = confirmation.Cancel,
                         Location = new Point(180, 50),
@@ -108,7 +108,7 @@ namespace Steam_Desktop_Authenticator
                     cancelButton.Click += btnCancel_Click;
                     panel.Controls.Add(cancelButton);
 
-                    Label summaryLabel = new Label()
+                    var summaryLabel = new Label()
                     {
                         Text = String.Join("\n", confirmation.Summary),
                         AutoSize = true,
@@ -123,7 +123,7 @@ namespace Steam_Desktop_Authenticator
             }
             catch (Exception ex)
             {
-                Label errorLabel = new Label() { Text = "Something went wrong:\n" + ex.Message, AutoSize = true, ForeColor = Color.Red, Location = new Point(20, 20) };
+                var errorLabel = new Label() { Text = "Something went wrong:\n" + ex.Message, AutoSize = true, ForeColor = Color.Red, Location = new Point(20, 20) };
                 this.splitContainer1.Panel2.Controls.Add(errorLabel);
             }
         }

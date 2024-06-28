@@ -1,5 +1,6 @@
 ﻿using SteamAuth;
 using System;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -11,6 +12,7 @@ namespace Steam_Desktop_Authenticator
         public string PhoneNumber;
         public string CountryCode;
         public bool Canceled;
+        private static readonly HashSet<char> AllowedChars = ['+', ' '];
 
         public PhoneInputForm(SteamGuardAccount account)
         {
@@ -39,8 +41,7 @@ namespace Steam_Desktop_Authenticator
                 return;
 
             // Only allow numbers, spaces, and +
-            var regex = new Regex(@"[^0-9\s\+]");
-            if (regex.IsMatch(e.KeyChar.ToString()))
+            if (!char.IsDigit(e.KeyChar) && !AllowedChars.Contains(e.KeyChar))
             {
                 e.Handled = true;
             }
@@ -53,8 +54,7 @@ namespace Steam_Desktop_Authenticator
                 return;
 
             // Only allow letters
-            var regex = new Regex(@"[^a-zA-Z]");
-            if (regex.IsMatch(e.KeyChar.ToString()))
+            if (!char.IsLetter(e.KeyChar))
             {
                 e.Handled = true;
             }

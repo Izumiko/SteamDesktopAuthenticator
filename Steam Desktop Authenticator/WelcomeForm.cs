@@ -1,12 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Steam_Desktop_Authenticator
@@ -33,14 +26,16 @@ namespace Steam_Desktop_Authenticator
         private void btnImportConfig_Click(object sender, EventArgs e)
         {
             // Let the user select the config dir
-            FolderBrowserDialog folderBrowser = new FolderBrowserDialog();
-            folderBrowser.Description = "Select the folder of your old Steam Desktop Authenticator install";
+            var folderBrowser = new FolderBrowserDialog
+            {
+                Description = "Select the folder of your old Steam Desktop Authenticator install"
+            };
             DialogResult userClickedOK = folderBrowser.ShowDialog();
 
             if (userClickedOK == DialogResult.OK)
             {
                 string path = folderBrowser.SelectedPath;
-                string pathToCopy = null;
+                string pathToCopy;
 
                 if (Directory.Exists(path + "/maFiles"))
                 {
