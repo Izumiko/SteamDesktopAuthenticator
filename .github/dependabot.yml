@@ -1,0 +1,14 @@
+version: 2
+updates:
+  - package-ecosystem: "nuget"
+    directory: "/Steam Desktop Authenticator"
+    schedule:
+      interval: "monthly"
+  - package-ecosystem: "gitsubmodule"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    groups:
+      submodules:
+        patterns:
+          - "*"
