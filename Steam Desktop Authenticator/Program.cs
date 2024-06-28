@@ -46,7 +46,11 @@ namespace Steam_Desktop_Authenticator
 
             // Parse command line arguments
             var options = new CommandLineOptions();
-            Parser.Default.ParseArguments(args, options);
+            Parser.Default.ParseArguments<CommandLineOptions>(args)
+                .WithParsed<CommandLineOptions>(o =>
+                {
+                    options = o;
+                });
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
