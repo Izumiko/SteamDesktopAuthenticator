@@ -68,7 +68,14 @@ namespace Steam_Desktop_Authenticator
                     if (!string.IsNullOrEmpty(confirmation.Icon))
                     {
                         var pictureBox = new PictureBox() { Width = 60, Height = 60, Location = new Point(20, 20), SizeMode = PictureBoxSizeMode.Zoom };
-                        pictureBox.Load(confirmation.Icon);
+                        try
+                        {
+                            pictureBox.Load(confirmation.Icon);
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine("Failed to load avatar: " + ex.Message);
+                        }
                         panel.Controls.Add(pictureBox);
                     }
 
