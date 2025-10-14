@@ -29,73 +29,107 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InputForm));
-            this.labelText = new System.Windows.Forms.Label();
-            this.txtBox = new System.Windows.Forms.TextBox();
-            this.btnAccept = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.SuspendLayout();
+            labelText = new System.Windows.Forms.Label();
+            txtBox = new System.Windows.Forms.TextBox();
+            btnAccept = new System.Windows.Forms.Button();
+            btnCancel = new System.Windows.Forms.Button();
+            tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            tableLayoutPanel1.SuspendLayout();
+            SuspendLayout();
             // 
             // labelText
             // 
-            this.labelText.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.labelText.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelText.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.labelText.Location = new System.Drawing.Point(12, 9);
-            this.labelText.Name = "labelText";
-            this.labelText.Size = new System.Drawing.Size(383, 159);
-            this.labelText.TabIndex = 0;
-            this.labelText.Text = "Sample Text~~~";
+            tableLayoutPanel1.SetColumnSpan(labelText, 2);
+            labelText.Dock = System.Windows.Forms.DockStyle.Fill;
+            labelText.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            labelText.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            labelText.ForeColor = System.Drawing.SystemColors.ControlText;
+            labelText.Location = new System.Drawing.Point(3, 0);
+            labelText.Name = "labelText";
+            labelText.Size = new System.Drawing.Size(401, 159);
+            labelText.TabIndex = 0;
+            labelText.Text = "Sample Text~~~";
             // 
             // txtBox
             // 
-            this.txtBox.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBox.Location = new System.Drawing.Point(12, 171);
-            this.txtBox.Name = "txtBox";
-            this.txtBox.Size = new System.Drawing.Size(383, 33);
-            this.txtBox.TabIndex = 1;
+            tableLayoutPanel1.SetColumnSpan(txtBox, 2);
+            txtBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            txtBox.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            txtBox.Location = new System.Drawing.Point(3, 162);
+            txtBox.Name = "txtBox";
+            txtBox.Size = new System.Drawing.Size(401, 45);
+            txtBox.TabIndex = 1;
             // 
             // btnAccept
             // 
-            this.btnAccept.Location = new System.Drawing.Point(15, 210);
-            this.btnAccept.Name = "btnAccept";
-            this.btnAccept.Size = new System.Drawing.Size(98, 28);
-            this.btnAccept.TabIndex = 2;
-            this.btnAccept.Text = "Accept";
-            this.btnAccept.UseVisualStyleBackColor = true;
-            this.btnAccept.Click += new System.EventHandler(this.btnAccept_Click);
+            btnAccept.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            btnAccept.AutoSize = true;
+            btnAccept.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            btnAccept.Location = new System.Drawing.Point(65, 213);
+            btnAccept.Name = "btnAccept";
+            btnAccept.Size = new System.Drawing.Size(72, 33);
+            btnAccept.TabIndex = 2;
+            btnAccept.Text = "Accept";
+            btnAccept.UseVisualStyleBackColor = true;
+            btnAccept.Click += btnAccept_Click;
             // 
             // btnCancel
             // 
-            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(297, 210);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(98, 28);
-            this.btnCancel.TabIndex = 3;
-            this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            btnCancel.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            btnCancel.AutoSize = true;
+            btnCancel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            btnCancel.Location = new System.Drawing.Point(269, 213);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new System.Drawing.Size(71, 33);
+            btnCancel.TabIndex = 3;
+            btnCancel.Text = "Cancel";
+            btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.Click += btnCancel_Click;
+            // 
+            // tableLayoutPanel1
+            // 
+            tableLayoutPanel1.AutoSize = true;
+            tableLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            tableLayoutPanel1.ColumnCount = 2;
+            tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanel1.Controls.Add(labelText, 0, 0);
+            tableLayoutPanel1.Controls.Add(btnCancel, 1, 2);
+            tableLayoutPanel1.Controls.Add(txtBox, 0, 1);
+            tableLayoutPanel1.Controls.Add(btnAccept, 0, 2);
+            tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 3;
+            tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            tableLayoutPanel1.Size = new System.Drawing.Size(407, 252);
+            tableLayoutPanel1.TabIndex = 4;
             // 
             // InputForm
             // 
-            this.AcceptButton = this.btnAccept;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(407, 250);
-            this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnAccept);
-            this.Controls.Add(this.txtBox);
-            this.Controls.Add(this.labelText);
-            this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximizeBox = false;
-            this.Name = "InputForm";
-            this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.InputForm_FormClosing);
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            AcceptButton = btnAccept;
+            AutoScaleDimensions = new System.Drawing.SizeF(144F, 144F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            AutoSize = true;
+            AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            CancelButton = btnCancel;
+            ClientSize = new System.Drawing.Size(407, 252);
+            Controls.Add(tableLayoutPanel1);
+            Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
+            MaximizeBox = false;
+            Name = "InputForm";
+            ShowInTaskbar = false;
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            FormClosing += InputForm_FormClosing;
+            tableLayoutPanel1.ResumeLayout(false);
+            tableLayoutPanel1.PerformLayout();
+            ResumeLayout(false);
+            PerformLayout();
 
         }
 
@@ -105,5 +139,6 @@
         public System.Windows.Forms.TextBox txtBox;
         private System.Windows.Forms.Button btnAccept;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
 }

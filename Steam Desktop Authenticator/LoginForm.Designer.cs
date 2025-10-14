@@ -29,98 +29,134 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtUsername = new System.Windows.Forms.TextBox();
-            this.txtPassword = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.btnSteamLogin = new System.Windows.Forms.Button();
-            this.labelLoginExplanation = new System.Windows.Forms.Label();
-            this.SuspendLayout();
+            label1 = new System.Windows.Forms.Label();
+            txtUsername = new System.Windows.Forms.TextBox();
+            txtPassword = new System.Windows.Forms.TextBox();
+            label2 = new System.Windows.Forms.Label();
+            btnSteamLogin = new System.Windows.Forms.Button();
+            labelLoginExplanation = new System.Windows.Forms.Label();
+            tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            tableLayoutPanel1.SuspendLayout();
+            SuspendLayout();
             // 
             // label1
             // 
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label1.Location = new System.Drawing.Point(12, 30);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(86, 25);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Username:";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label1.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            label1.AutoSize = true;
+            label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            label1.ForeColor = System.Drawing.SystemColors.ControlText;
+            label1.Location = new System.Drawing.Point(3, 5);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(103, 28);
+            label1.TabIndex = 0;
+            label1.Text = "Username:";
+            label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // txtUsername
             // 
-            this.txtUsername.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUsername.Location = new System.Drawing.Point(101, 31);
-            this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(220, 25);
-            this.txtUsername.TabIndex = 1;
+            txtUsername.Dock = System.Windows.Forms.DockStyle.Fill;
+            txtUsername.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            txtUsername.Location = new System.Drawing.Point(112, 3);
+            txtUsername.Name = "txtUsername";
+            txtUsername.Size = new System.Drawing.Size(231, 33);
+            txtUsername.TabIndex = 1;
             // 
             // txtPassword
             // 
-            this.txtPassword.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPassword.Location = new System.Drawing.Point(101, 63);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(220, 25);
-            this.txtPassword.TabIndex = 3;
+            txtPassword.Dock = System.Windows.Forms.DockStyle.Fill;
+            txtPassword.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            txtPassword.Location = new System.Drawing.Point(112, 42);
+            txtPassword.Name = "txtPassword";
+            txtPassword.PasswordChar = '*';
+            txtPassword.Size = new System.Drawing.Size(231, 33);
+            txtPassword.TabIndex = 3;
             // 
             // label2
             // 
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label2.Location = new System.Drawing.Point(12, 62);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(83, 25);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Password:";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            label2.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            label2.AutoSize = true;
+            label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            label2.ForeColor = System.Drawing.SystemColors.ControlText;
+            label2.Location = new System.Drawing.Point(9, 44);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(97, 28);
+            label2.TabIndex = 2;
+            label2.Text = "Password:";
+            label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // btnSteamLogin
             // 
-            this.btnSteamLogin.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSteamLogin.Location = new System.Drawing.Point(224, 147);
-            this.btnSteamLogin.Name = "btnSteamLogin";
-            this.btnSteamLogin.Size = new System.Drawing.Size(110, 33);
-            this.btnSteamLogin.TabIndex = 4;
-            this.btnSteamLogin.Text = "Login";
-            this.btnSteamLogin.UseVisualStyleBackColor = true;
-            this.btnSteamLogin.Click += new System.EventHandler(this.btnSteamLogin_Click);
+            btnSteamLogin.Anchor = System.Windows.Forms.AnchorStyles.None;
+            btnSteamLogin.AutoSize = true;
+            btnSteamLogin.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            btnSteamLogin.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            btnSteamLogin.Location = new System.Drawing.Point(192, 187);
+            btnSteamLogin.Name = "btnSteamLogin";
+            btnSteamLogin.Size = new System.Drawing.Size(71, 38);
+            btnSteamLogin.TabIndex = 4;
+            btnSteamLogin.Text = "Login";
+            btnSteamLogin.UseVisualStyleBackColor = true;
+            btnSteamLogin.Click += btnSteamLogin_Click;
             // 
             // labelLoginExplanation
             // 
-            this.labelLoginExplanation.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelLoginExplanation.Location = new System.Drawing.Point(15, 98);
-            this.labelLoginExplanation.Name = "labelLoginExplanation";
-            this.labelLoginExplanation.Size = new System.Drawing.Size(306, 46);
-            this.labelLoginExplanation.TabIndex = 5;
-            this.labelLoginExplanation.Text = "This will activate Steam Desktop Authenticator on your Steam account. This requir" +
-    "es a phone number that can receive SMS.";
+            tableLayoutPanel1.SetColumnSpan(labelLoginExplanation, 2);
+            labelLoginExplanation.Dock = System.Windows.Forms.DockStyle.Fill;
+            labelLoginExplanation.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            labelLoginExplanation.Location = new System.Drawing.Point(3, 78);
+            labelLoginExplanation.Name = "labelLoginExplanation";
+            labelLoginExplanation.Size = new System.Drawing.Size(340, 100);
+            labelLoginExplanation.TabIndex = 5;
+            labelLoginExplanation.Text = "This will activate Steam Desktop Authenticator on your Steam account. This requires a phone number that can receive SMS.";
+            labelLoginExplanation.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // tableLayoutPanel1
+            // 
+            tableLayoutPanel1.AutoSize = true;
+            tableLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            tableLayoutPanel1.ColumnCount = 2;
+            tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            tableLayoutPanel1.Controls.Add(label1, 0, 0);
+            tableLayoutPanel1.Controls.Add(btnSteamLogin, 1, 3);
+            tableLayoutPanel1.Controls.Add(labelLoginExplanation, 0, 2);
+            tableLayoutPanel1.Controls.Add(label2, 0, 1);
+            tableLayoutPanel1.Controls.Add(txtUsername, 1, 0);
+            tableLayoutPanel1.Controls.Add(txtPassword, 1, 1);
+            tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 4;
+            tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            tableLayoutPanel1.Size = new System.Drawing.Size(346, 234);
+            tableLayoutPanel1.TabIndex = 6;
             // 
             // LoginForm
             // 
-            this.AcceptButton = this.btnSteamLogin;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(346, 193);
-            this.Controls.Add(this.labelLoginExplanation);
-            this.Controls.Add(this.btnSteamLogin);
-            this.Controls.Add(this.txtPassword);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.txtUsername);
-            this.Controls.Add(this.label1);
-            this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.MaximizeBox = false;
-            this.Name = "LoginForm";
-            this.ShowIcon = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Steam Login";
-            this.Load += new System.EventHandler(this.LoginForm_Load);
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            AcceptButton = btnSteamLogin;
+            AutoScaleDimensions = new System.Drawing.SizeF(144F, 144F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            AutoSize = true;
+            AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            ClientSize = new System.Drawing.Size(346, 234);
+            Controls.Add(tableLayoutPanel1);
+            Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
+            ImeMode = System.Windows.Forms.ImeMode.On;
+            MaximizeBox = false;
+            Name = "LoginForm";
+            ShowIcon = false;
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            Text = "Steam Login";
+            Load += LoginForm_Load;
+            tableLayoutPanel1.ResumeLayout(false);
+            tableLayoutPanel1.PerformLayout();
+            ResumeLayout(false);
+            PerformLayout();
 
         }
 
@@ -132,5 +168,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnSteamLogin;
         private System.Windows.Forms.Label labelLoginExplanation;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
 }

@@ -104,6 +104,9 @@ namespace Steam_Desktop_Authenticator
 
         private void MainForm_Resize(object sender, EventArgs e)
         {
+            var curPos = lblStatus.Location;
+            curPos.X = this.Size.Width / 2;
+            lblStatus.Location = curPos;
             if (this.WindowState == FormWindowState.Minimized)
             {
                 this.Hide();
@@ -725,19 +728,6 @@ namespace Steam_Desktop_Authenticator
             if (e.KeyCode == Keys.C && e.Modifiers == Keys.Control)
             {
                 CopyLoginToken();
-            }
-        }
-
-        private void panelButtons_SizeChanged(object sender, EventArgs e)
-        {
-            int totButtons = panelButtons.Controls.OfType<Button>().Count();
-
-            var curPos = new Point(0, 0);
-            foreach (Button but in panelButtons.Controls.OfType<Button>())
-            {
-                but.Width = panelButtons.Width / totButtons;
-                but.Location = curPos;
-                curPos = new Point(curPos.X + but.Width, 0);
             }
         }
     }

@@ -29,85 +29,125 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TradePopupForm));
-            this.lblDesc = new System.Windows.Forms.Label();
-            this.btnDeny = new System.Windows.Forms.Button();
-            this.btnAccept = new System.Windows.Forms.Button();
-            this.lblStatus = new System.Windows.Forms.Label();
-            this.lblAccount = new System.Windows.Forms.Label();
-            this.SuspendLayout();
+            lblDesc = new System.Windows.Forms.Label();
+            btnDeny = new System.Windows.Forms.Button();
+            btnAccept = new System.Windows.Forms.Button();
+            lblStatus = new System.Windows.Forms.Label();
+            lblAccount = new System.Windows.Forms.Label();
+            tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            tableLayoutPanel1.SuspendLayout();
+            SuspendLayout();
             // 
             // lblDesc
             // 
-            this.lblDesc.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDesc.Location = new System.Drawing.Point(12, 23);
-            this.lblDesc.Name = "lblDesc";
-            this.lblDesc.Size = new System.Drawing.Size(142, 38);
-            this.lblDesc.TabIndex = 1;
-            this.lblDesc.Text = "trade description";
-            this.lblDesc.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            lblDesc.AutoSize = true;
+            tableLayoutPanel1.SetColumnSpan(lblDesc, 2);
+            lblDesc.Dock = System.Windows.Forms.DockStyle.Fill;
+            lblDesc.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            lblDesc.Location = new System.Drawing.Point(3, 36);
+            lblDesc.Name = "lblDesc";
+            lblDesc.Size = new System.Drawing.Size(174, 36);
+            lblDesc.TabIndex = 1;
+            lblDesc.Text = "trade description";
+            lblDesc.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnDeny
             // 
-            this.btnDeny.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.btnDeny.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDeny.Location = new System.Drawing.Point(12, 87);
-            this.btnDeny.Name = "btnDeny";
-            this.btnDeny.Size = new System.Drawing.Size(69, 32);
-            this.btnDeny.TabIndex = 2;
-            this.btnDeny.Text = "Deny";
-            this.btnDeny.UseVisualStyleBackColor = false;
-            this.btnDeny.Click += new System.EventHandler(this.btnDeny_Click);
+            btnDeny.Anchor = System.Windows.Forms.AnchorStyles.None;
+            btnDeny.AutoSize = true;
+            btnDeny.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            btnDeny.BackColor = System.Drawing.Color.FromArgb(255, 192, 192);
+            btnDeny.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            btnDeny.Location = new System.Drawing.Point(15, 111);
+            btnDeny.Name = "btnDeny";
+            btnDeny.Size = new System.Drawing.Size(59, 30);
+            btnDeny.TabIndex = 2;
+            btnDeny.Text = "Deny";
+            btnDeny.UseVisualStyleBackColor = false;
+            btnDeny.Click += btnDeny_Click;
             // 
             // btnAccept
             // 
-            this.btnAccept.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.btnAccept.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAccept.Location = new System.Drawing.Point(87, 87);
-            this.btnAccept.Name = "btnAccept";
-            this.btnAccept.Size = new System.Drawing.Size(67, 32);
-            this.btnAccept.TabIndex = 2;
-            this.btnAccept.Text = "Accept";
-            this.btnAccept.UseVisualStyleBackColor = false;
-            this.btnAccept.Click += new System.EventHandler(this.btnAccept_Click);
+            btnAccept.Anchor = System.Windows.Forms.AnchorStyles.None;
+            btnAccept.AutoSize = true;
+            btnAccept.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            btnAccept.BackColor = System.Drawing.Color.FromArgb(192, 255, 192);
+            btnAccept.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            btnAccept.Location = new System.Drawing.Point(99, 111);
+            btnAccept.Name = "btnAccept";
+            btnAccept.Size = new System.Drawing.Size(72, 30);
+            btnAccept.TabIndex = 2;
+            btnAccept.Text = "Accept";
+            btnAccept.UseVisualStyleBackColor = false;
+            btnAccept.Click += btnAccept_Click;
             // 
             // lblStatus
             // 
-            this.lblStatus.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStatus.Location = new System.Drawing.Point(0, 61);
-            this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(166, 19);
-            this.lblStatus.TabIndex = 3;
-            this.lblStatus.Text = "status";
-            this.lblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            tableLayoutPanel1.SetColumnSpan(lblStatus, 2);
+            lblStatus.Dock = System.Windows.Forms.DockStyle.Fill;
+            lblStatus.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            lblStatus.Location = new System.Drawing.Point(3, 72);
+            lblStatus.Name = "lblStatus";
+            lblStatus.Size = new System.Drawing.Size(174, 36);
+            lblStatus.TabIndex = 3;
+            lblStatus.Text = "status";
+            lblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblAccount
             // 
-            this.lblAccount.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAccount.Location = new System.Drawing.Point(12, 0);
-            this.lblAccount.Name = "lblAccount";
-            this.lblAccount.Size = new System.Drawing.Size(142, 23);
-            this.lblAccount.TabIndex = 4;
-            this.lblAccount.Text = "account name";
-            this.lblAccount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            lblAccount.AutoSize = true;
+            tableLayoutPanel1.SetColumnSpan(lblAccount, 2);
+            lblAccount.Dock = System.Windows.Forms.DockStyle.Fill;
+            lblAccount.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            lblAccount.Location = new System.Drawing.Point(3, 0);
+            lblAccount.Name = "lblAccount";
+            lblAccount.Size = new System.Drawing.Size(174, 36);
+            lblAccount.TabIndex = 4;
+            lblAccount.Text = "account name";
+            lblAccount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // tableLayoutPanel1
+            // 
+            tableLayoutPanel1.AutoSize = true;
+            tableLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            tableLayoutPanel1.ColumnCount = 2;
+            tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanel1.Controls.Add(lblAccount, 0, 0);
+            tableLayoutPanel1.Controls.Add(btnAccept, 1, 3);
+            tableLayoutPanel1.Controls.Add(lblStatus, 0, 2);
+            tableLayoutPanel1.Controls.Add(btnDeny, 0, 3);
+            tableLayoutPanel1.Controls.Add(lblDesc, 0, 1);
+            tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 4;
+            tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            tableLayoutPanel1.Size = new System.Drawing.Size(180, 144);
+            tableLayoutPanel1.TabIndex = 5;
             // 
             // TradePopupForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(166, 131);
-            this.Controls.Add(this.lblAccount);
-            this.Controls.Add(this.lblStatus);
-            this.Controls.Add(this.btnAccept);
-            this.Controls.Add(this.btnDeny);
-            this.Controls.Add(this.lblDesc);
-            this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "TradePopupForm";
-            this.Text = "New confirmation";
-            this.TopMost = true;
-            this.Load += new System.EventHandler(this.TradePopupForm_Load);
-            this.ResumeLayout(false);
+            AutoScaleDimensions = new System.Drawing.SizeF(144F, 144F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            AutoSize = true;
+            AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            ClientSize = new System.Drawing.Size(180, 144);
+            Controls.Add(tableLayoutPanel1);
+            Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
+            Name = "TradePopupForm";
+            Text = "New confirmation";
+            TopMost = true;
+            Load += TradePopupForm_Load;
+            tableLayoutPanel1.ResumeLayout(false);
+            tableLayoutPanel1.PerformLayout();
+            ResumeLayout(false);
+            PerformLayout();
 
         }
 
@@ -117,5 +157,6 @@
         private System.Windows.Forms.Button btnAccept;
         private System.Windows.Forms.Label lblStatus;
         private System.Windows.Forms.Label lblAccount;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
 }

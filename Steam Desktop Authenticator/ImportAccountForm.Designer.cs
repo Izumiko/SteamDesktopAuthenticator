@@ -11,87 +11,125 @@ namespace Steam_Desktop_Authenticator
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ImportAccountForm));
-            this.labelText = new System.Windows.Forms.Label();
-            this.txtBox = new System.Windows.Forms.TextBox();
-            this.btnImport = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.SuspendLayout();
+            labelText = new System.Windows.Forms.Label();
+            txtBox = new System.Windows.Forms.TextBox();
+            btnImport = new System.Windows.Forms.Button();
+            btnCancel = new System.Windows.Forms.Button();
+            label1 = new System.Windows.Forms.Label();
+            tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            tableLayoutPanel1.SuspendLayout();
+            SuspendLayout();
             // 
             // labelText
             // 
-            this.labelText.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.labelText.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelText.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.labelText.Location = new System.Drawing.Point(15, 14);
-            this.labelText.Name = "labelText";
-            this.labelText.Size = new System.Drawing.Size(317, 25);
-            this.labelText.TabIndex = 0;
-            this.labelText.Text = "Enter your encryption passkey if your .maFile is encrypted:";
+            labelText.AutoSize = true;
+            tableLayoutPanel1.SetColumnSpan(labelText, 2);
+            labelText.Dock = System.Windows.Forms.DockStyle.Fill;
+            labelText.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            labelText.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            labelText.ForeColor = System.Drawing.SystemColors.ControlText;
+            labelText.Location = new System.Drawing.Point(3, 0);
+            labelText.Name = "labelText";
+            labelText.Size = new System.Drawing.Size(330, 50);
+            labelText.TabIndex = 0;
+            labelText.Text = "Enter your encryption passkey if your .maFile is encrypted:";
             // 
             // txtBox
             // 
-            this.txtBox.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBox.Location = new System.Drawing.Point(15, 42);
-            this.txtBox.Name = "txtBox";
-            this.txtBox.Size = new System.Drawing.Size(307, 33);
-            this.txtBox.TabIndex = 1;
+            tableLayoutPanel1.SetColumnSpan(txtBox, 2);
+            txtBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            txtBox.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            txtBox.Location = new System.Drawing.Point(3, 53);
+            txtBox.Name = "txtBox";
+            txtBox.Size = new System.Drawing.Size(330, 45);
+            txtBox.TabIndex = 1;
             // 
             // btnImport
             // 
-            this.btnImport.Location = new System.Drawing.Point(135, 131);
-            this.btnImport.Name = "btnImport";
-            this.btnImport.Size = new System.Drawing.Size(187, 28);
-            this.btnImport.TabIndex = 3;
-            this.btnImport.Text = "Select .maFile file to Import";
-            this.btnImport.UseVisualStyleBackColor = true;
-            this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
+            btnImport.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            btnImport.AutoSize = true;
+            btnImport.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            btnImport.Location = new System.Drawing.Point(105, 154);
+            btnImport.Name = "btnImport";
+            btnImport.Size = new System.Drawing.Size(228, 33);
+            btnImport.TabIndex = 3;
+            btnImport.Text = "Select .maFile file to Import";
+            btnImport.UseVisualStyleBackColor = true;
+            btnImport.Click += btnImport_Click;
             // 
             // btnCancel
             // 
-            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(41, 131);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(88, 28);
-            this.btnCancel.TabIndex = 4;
-            this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            btnCancel.AutoSize = true;
+            btnCancel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            btnCancel.Location = new System.Drawing.Point(3, 154);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new System.Drawing.Size(71, 33);
+            btnCancel.TabIndex = 4;
+            btnCancel.Text = "Cancel";
+            btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.Click += btnCancel_Click;
             // 
             // label1
             // 
-            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label1.Location = new System.Drawing.Point(15, 83);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(307, 40);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "If you import an encrypted .maFile, the manifest file must be next to it.";
+            label1.AutoSize = true;
+            tableLayoutPanel1.SetColumnSpan(label1, 2);
+            label1.Dock = System.Windows.Forms.DockStyle.Fill;
+            label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            label1.ForeColor = System.Drawing.SystemColors.ControlText;
+            label1.Location = new System.Drawing.Point(3, 101);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(330, 50);
+            label1.TabIndex = 2;
+            label1.Text = "If you import an encrypted .maFile, the manifest file must be next to it.";
+            // 
+            // tableLayoutPanel1
+            // 
+            tableLayoutPanel1.AutoSize = true;
+            tableLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            tableLayoutPanel1.ColumnCount = 2;
+            tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            tableLayoutPanel1.Controls.Add(labelText, 0, 0);
+            tableLayoutPanel1.Controls.Add(btnImport, 1, 3);
+            tableLayoutPanel1.Controls.Add(btnCancel, 0, 3);
+            tableLayoutPanel1.Controls.Add(label1, 0, 2);
+            tableLayoutPanel1.Controls.Add(txtBox, 0, 1);
+            tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 4;
+            tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            tableLayoutPanel1.Size = new System.Drawing.Size(336, 193);
+            tableLayoutPanel1.TabIndex = 5;
             // 
             // ImportAccountForm
             // 
-            this.AcceptButton = this.btnImport;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(336, 171);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnImport);
-            this.Controls.Add(this.txtBox);
-            this.Controls.Add(this.labelText);
-            this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximizeBox = false;
-            this.Name = "ImportAccountForm";
-            this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Import Account";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Import_maFile_Form_FormClosing);
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            AcceptButton = btnImport;
+            AutoScaleDimensions = new System.Drawing.SizeF(144F, 144F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            AutoSize = true;
+            AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            CancelButton = btnCancel;
+            ClientSize = new System.Drawing.Size(336, 193);
+            Controls.Add(tableLayoutPanel1);
+            Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
+            MaximizeBox = false;
+            Name = "ImportAccountForm";
+            ShowInTaskbar = false;
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            Text = "Import Account";
+            FormClosing += Import_maFile_Form_FormClosing;
+            tableLayoutPanel1.ResumeLayout(false);
+            tableLayoutPanel1.PerformLayout();
+            ResumeLayout(false);
+            PerformLayout();
 
         }
 
@@ -102,5 +140,6 @@ namespace Steam_Desktop_Authenticator
         private System.Windows.Forms.Button btnImport;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
 }

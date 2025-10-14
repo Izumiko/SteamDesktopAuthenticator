@@ -52,6 +52,7 @@ namespace Steam_Desktop_Authenticator
                     options = o;
                 });
 
+            Application.SetHighDpiMode(HighDpiMode.PerMonitorV2);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 

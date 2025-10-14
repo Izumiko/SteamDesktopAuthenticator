@@ -29,72 +29,110 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WelcomeForm));
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnImportConfig = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.btnJustStart = new System.Windows.Forms.Button();
-            this.SuspendLayout();
+            label1 = new System.Windows.Forms.Label();
+            btnImportConfig = new System.Windows.Forms.Button();
+            label2 = new System.Windows.Forms.Label();
+            btnJustStart = new System.Windows.Forms.Button();
+            tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            tableLayoutPanel1.SuspendLayout();
+            SuspendLayout();
             // 
             // label1
             // 
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(366, 73);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Welcome to\r\nSteam Desktop Authenticator";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            label1.AutoSize = true;
+            label1.Dock = System.Windows.Forms.DockStyle.Fill;
+            label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            label1.Location = new System.Drawing.Point(3, 0);
+            label1.MinimumSize = new System.Drawing.Size(500, 100);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(532, 100);
+            label1.TabIndex = 0;
+            label1.Text = "Welcome to\r\nSteam Desktop Authenticator";
+            label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnImportConfig
             // 
-            this.btnImportConfig.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnImportConfig.Location = new System.Drawing.Point(12, 134);
-            this.btnImportConfig.Name = "btnImportConfig";
-            this.btnImportConfig.Size = new System.Drawing.Size(366, 51);
-            this.btnImportConfig.TabIndex = 1;
-            this.btnImportConfig.Text = "I already setup Steam Desktop Authenticator in another location on this PC and I " +
-    "want to import its account(s).\r\n";
-            this.btnImportConfig.UseVisualStyleBackColor = true;
-            this.btnImportConfig.Click += new System.EventHandler(this.btnImportConfig_Click);
+            btnImportConfig.Anchor = System.Windows.Forms.AnchorStyles.None;
+            btnImportConfig.AutoSize = true;
+            btnImportConfig.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            btnImportConfig.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            btnImportConfig.Location = new System.Drawing.Point(61, 135);
+            btnImportConfig.MinimumSize = new System.Drawing.Size(400, 100);
+            btnImportConfig.Name = "btnImportConfig";
+            btnImportConfig.Size = new System.Drawing.Size(416, 100);
+            btnImportConfig.TabIndex = 1;
+            btnImportConfig.Text = "I already setup Steam Desktop Authenticator \r\nin another location on this PC and \r\nI want to import its account(s).";
+            btnImportConfig.UseVisualStyleBackColor = true;
+            btnImportConfig.Click += btnImportConfig_Click;
             // 
             // label2
             // 
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(12, 86);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(366, 37);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Select an item to get started:";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            label2.AutoSize = true;
+            label2.Dock = System.Windows.Forms.DockStyle.Fill;
+            label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            label2.Location = new System.Drawing.Point(3, 100);
+            label2.MinimumSize = new System.Drawing.Size(300, 32);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(532, 32);
+            label2.TabIndex = 2;
+            label2.Text = "Select an item to get started:";
+            label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnJustStart
             // 
-            this.btnJustStart.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnJustStart.Location = new System.Drawing.Point(12, 191);
-            this.btnJustStart.Name = "btnJustStart";
-            this.btnJustStart.Size = new System.Drawing.Size(366, 52);
-            this.btnJustStart.TabIndex = 4;
-            this.btnJustStart.Text = "This is my first time and \r\nI just want to sign into my Steam Account(s).";
-            this.btnJustStart.UseVisualStyleBackColor = true;
-            this.btnJustStart.Click += new System.EventHandler(this.btnJustStart_Click);
+            btnJustStart.Anchor = System.Windows.Forms.AnchorStyles.None;
+            btnJustStart.AutoSize = true;
+            btnJustStart.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            btnJustStart.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            btnJustStart.Location = new System.Drawing.Point(65, 253);
+            btnJustStart.MinimumSize = new System.Drawing.Size(400, 75);
+            btnJustStart.Name = "btnJustStart";
+            btnJustStart.Size = new System.Drawing.Size(407, 75);
+            btnJustStart.TabIndex = 4;
+            btnJustStart.Text = "This is my first time and \r\nI just want to sign into my Steam Account(s).";
+            btnJustStart.UseVisualStyleBackColor = true;
+            btnJustStart.Click += btnJustStart_Click;
+            // 
+            // tableLayoutPanel1
+            // 
+            tableLayoutPanel1.AutoSize = true;
+            tableLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            tableLayoutPanel1.ColumnCount = 1;
+            tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            tableLayoutPanel1.Controls.Add(label1, 0, 0);
+            tableLayoutPanel1.Controls.Add(btnJustStart, 0, 3);
+            tableLayoutPanel1.Controls.Add(label2, 0, 1);
+            tableLayoutPanel1.Controls.Add(btnImportConfig, 0, 2);
+            tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 4;
+            tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            tableLayoutPanel1.Size = new System.Drawing.Size(538, 344);
+            tableLayoutPanel1.TabIndex = 5;
             // 
             // WelcomeForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(390, 255);
-            this.Controls.Add(this.btnJustStart);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.btnImportConfig);
-            this.Controls.Add(this.label1);
-            this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximizeBox = false;
-            this.Name = "WelcomeForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Steam Desktop Authenticator";
-            this.ResumeLayout(false);
+            AutoScaleDimensions = new System.Drawing.SizeF(144F, 144F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            AutoSize = true;
+            AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            ClientSize = new System.Drawing.Size(538, 344);
+            Controls.Add(tableLayoutPanel1);
+            Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
+            MaximizeBox = false;
+            Name = "WelcomeForm";
+            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            Text = "Steam Desktop Authenticator";
+            tableLayoutPanel1.ResumeLayout(false);
+            tableLayoutPanel1.PerformLayout();
+            ResumeLayout(false);
+            PerformLayout();
 
         }
 
@@ -104,5 +142,6 @@
         private System.Windows.Forms.Button btnImportConfig;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnJustStart;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
 }
