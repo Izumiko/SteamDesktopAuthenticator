@@ -74,6 +74,8 @@
             tableLayoutPanelStatus = new System.Windows.Forms.TableLayoutPanel();
             labelUpdate = new System.Windows.Forms.LinkLabel();
             labelVersion = new System.Windows.Forms.Label();
+            tableLayoutPanelAccount = new System.Windows.Forms.TableLayoutPanel();
+            btnLoginViaQr = new System.Windows.Forms.Button();
             menuStripTray.SuspendLayout();
             menuStrip.SuspendLayout();
             tableLayoutPanelMain.SuspendLayout();
@@ -84,6 +86,7 @@
             groupAccount.SuspendLayout();
             tableLayoutPanelFilter.SuspendLayout();
             tableLayoutPanelStatus.SuspendLayout();
+            tableLayoutPanelAccount.SuspendLayout();
             SuspendLayout();
             // 
             // timerSteamGuard
@@ -191,26 +194,26 @@
             // menuImportAccount
             // 
             menuImportAccount.Name = "menuImportAccount";
-            menuImportAccount.Size = new System.Drawing.Size(270, 34);
+            menuImportAccount.Size = new System.Drawing.Size(245, 34);
             menuImportAccount.Text = "Import Account";
             menuImportAccount.Click += menuImportAccount_Click;
             // 
             // toolStripSeparator1
             // 
             toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new System.Drawing.Size(267, 6);
+            toolStripSeparator1.Size = new System.Drawing.Size(242, 6);
             // 
             // menuSettings
             // 
             menuSettings.Name = "menuSettings";
-            menuSettings.Size = new System.Drawing.Size(270, 34);
+            menuSettings.Size = new System.Drawing.Size(245, 34);
             menuSettings.Text = "Settings";
             menuSettings.Click += menuSettings_Click;
             // 
             // menuQuit
             // 
             menuQuit.Name = "menuQuit";
-            menuQuit.Size = new System.Drawing.Size(270, 34);
+            menuQuit.Size = new System.Drawing.Size(245, 34);
             menuQuit.Text = "Quit";
             menuQuit.Click += menuQuit_Click;
             // 
@@ -406,13 +409,13 @@
             // 
             groupAccount.AutoSize = true;
             groupAccount.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            groupAccount.Controls.Add(btnTradeConfirmations);
+            groupAccount.Controls.Add(tableLayoutPanelAccount);
             groupAccount.Dock = System.Windows.Forms.DockStyle.Fill;
             groupAccount.Location = new System.Drawing.Point(3, 168);
             groupAccount.MaximumSize = new System.Drawing.Size(0, 64);
             groupAccount.MinimumSize = new System.Drawing.Size(0, 24);
             groupAccount.Name = "groupAccount";
-            groupAccount.Size = new System.Drawing.Size(356, 61);
+            groupAccount.Size = new System.Drawing.Size(356, 64);
             groupAccount.TabIndex = 7;
             groupAccount.TabStop = false;
             groupAccount.Text = "Account";
@@ -423,9 +426,9 @@
             btnTradeConfirmations.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             btnTradeConfirmations.Dock = System.Windows.Forms.DockStyle.Fill;
             btnTradeConfirmations.Enabled = false;
-            btnTradeConfirmations.Location = new System.Drawing.Point(3, 25);
+            btnTradeConfirmations.Location = new System.Drawing.Point(3, 3);
             btnTradeConfirmations.Name = "btnTradeConfirmations";
-            btnTradeConfirmations.Size = new System.Drawing.Size(350, 33);
+            btnTradeConfirmations.Size = new System.Drawing.Size(169, 30);
             btnTradeConfirmations.TabIndex = 4;
             btnTradeConfirmations.Text = "View Confirmations";
             btnTradeConfirmations.UseVisualStyleBackColor = true;
@@ -435,10 +438,10 @@
             // 
             listAccounts.Dock = System.Windows.Forms.DockStyle.Fill;
             listAccounts.FormattingEnabled = true;
-            listAccounts.Location = new System.Drawing.Point(3, 235);
+            listAccounts.Location = new System.Drawing.Point(3, 238);
             listAccounts.MinimumSize = new System.Drawing.Size(0, 64);
             listAccounts.Name = "listAccounts";
-            listAccounts.Size = new System.Drawing.Size(356, 225);
+            listAccounts.Size = new System.Drawing.Size(356, 222);
             listAccounts.TabIndex = 3;
             listAccounts.SelectedValueChanged += listAccounts_SelectedValueChanged;
             listAccounts.KeyDown += listAccounts_KeyDown;
@@ -527,6 +530,38 @@
             labelVersion.Text = "v0.0.0";
             labelVersion.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             // 
+            // tableLayoutPanelAccount
+            // 
+            tableLayoutPanelAccount.AutoSize = true;
+            tableLayoutPanelAccount.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            tableLayoutPanelAccount.ColumnCount = 2;
+            tableLayoutPanelAccount.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanelAccount.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanelAccount.Controls.Add(btnLoginViaQr, 1, 0);
+            tableLayoutPanelAccount.Controls.Add(btnTradeConfirmations, 0, 0);
+            tableLayoutPanelAccount.Dock = System.Windows.Forms.DockStyle.Fill;
+            tableLayoutPanelAccount.Location = new System.Drawing.Point(3, 25);
+            tableLayoutPanelAccount.Name = "tableLayoutPanelAccount";
+            tableLayoutPanelAccount.RowCount = 1;
+            tableLayoutPanelAccount.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanelAccount.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            tableLayoutPanelAccount.Size = new System.Drawing.Size(350, 36);
+            tableLayoutPanelAccount.TabIndex = 5;
+            // 
+            // btnLoginViaQr
+            // 
+            btnLoginViaQr.AutoSize = true;
+            btnLoginViaQr.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            btnLoginViaQr.Dock = System.Windows.Forms.DockStyle.Fill;
+            btnLoginViaQr.Enabled = false;
+            btnLoginViaQr.Location = new System.Drawing.Point(178, 3);
+            btnLoginViaQr.Name = "btnLoginViaQr";
+            btnLoginViaQr.Size = new System.Drawing.Size(169, 30);
+            btnLoginViaQr.TabIndex = 5;
+            btnLoginViaQr.Text = "Login via QR";
+            btnLoginViaQr.UseVisualStyleBackColor = true;
+            btnLoginViaQr.Click += btnLoginViaQr_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(144F, 144F);
@@ -568,6 +603,8 @@
             tableLayoutPanelFilter.PerformLayout();
             tableLayoutPanelStatus.ResumeLayout(false);
             tableLayoutPanelStatus.PerformLayout();
+            tableLayoutPanelAccount.ResumeLayout(false);
+            tableLayoutPanelAccount.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
 
@@ -617,6 +654,8 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelStatus;
         private System.Windows.Forms.LinkLabel labelUpdate;
         private System.Windows.Forms.Label labelVersion;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelAccount;
+        private System.Windows.Forms.Button btnLoginViaQr;
     }
 }
 
