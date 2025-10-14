@@ -1,7 +1,6 @@
 ﻿using SteamAuth;
 using System;
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace Steam_Desktop_Authenticator

@@ -1,9 +1,9 @@
-﻿using System;
+﻿using SteamAuth;
+using System;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using SteamAuth;
-using System.Drawing.Drawing2D;
 
 namespace Steam_Desktop_Authenticator
 {
@@ -81,7 +81,7 @@ namespace Steam_Desktop_Authenticator
 
                     var nameLabel = new Label()
                     {
-                        Text = $"{confirmation.Headline}\n{confirmation.Creator.ToString()}",
+                        Text = $"{confirmation.Headline}\n{confirmation.Creator}",
                         AutoSize = true,
                         ForeColor = Color.Snow,
                         Location = new Point(90, 20),

@@ -1,10 +1,10 @@
-using System;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using SteamAuth;
 using SteamKit2;
 using SteamKit2.Authentication;
 using SteamKit2.Internal;
+using System;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Steam_Desktop_Authenticator
 {
@@ -121,7 +121,7 @@ namespace Steam_Desktop_Authenticator
             }
 
             // Build a SessionData object
-            SessionData sessionData = new SessionData()
+            SessionData sessionData = new()
             {
                 SteamID = authSession.SteamID.ConvertToUInt64(),
                 AccessToken = pollResponse.AccessToken,

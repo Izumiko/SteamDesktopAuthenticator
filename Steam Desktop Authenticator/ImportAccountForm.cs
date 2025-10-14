@@ -1,9 +1,9 @@
+using Newtonsoft.Json;
+using SteamAuth;
 using System;
 using System.Collections.Generic;
-using System.Windows.Forms;
-using SteamAuth;
-using Newtonsoft.Json;
 using System.IO;
+using System.Windows.Forms;
 
 namespace Steam_Desktop_Authenticator
 {

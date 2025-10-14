@@ -1,16 +1,16 @@
-﻿using System;
-using System.Diagnostics;
-using System.Windows.Forms;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using SteamAuth;
+using System;
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
-using Newtonsoft.Json;
-using System.Threading;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Net.Http;
+using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
-using Newtonsoft.Json.Linq;
+using System.Windows.Forms;
 
 namespace Steam_Desktop_Authenticator
 {
@@ -86,8 +86,8 @@ namespace Steam_Desktop_Authenticator
 
             btnManageEncryption.Enabled = manifest.Entries.Count > 0;
 
-            loadSettings();
-            loadAccountsList();
+            LoadSettings();
+            LoadAccountsList();
 
             await CheckForUpdatesAsync();
 
@@ -122,7 +122,7 @@ namespace Steam_Desktop_Authenticator
         {
             var loginForm = new LoginForm();
             loginForm.ShowDialog();
-            this.loadAccountsList();
+            this.LoadAccountsList();
         }
 
         private void btnTradeConfirmations_Click(object sender, EventArgs e)
@@ -189,13 +189,13 @@ namespace Steam_Desktop_Authenticator
                 else
                 {
                     MessageBox.Show("Passkey successfully " + action + "d.");
-                    this.loadAccountsList();
+                    this.LoadAccountsList();
                 }
             }
             else
             {
                 passKey = manifest.PromptSetupPassKey();
-                this.loadAccountsList();
+                this.LoadAccountsList();
             }
         }
 
@@ -207,7 +207,7 @@ namespace Steam_Desktop_Authenticator
             }
             else
             {
-                compareVersions();
+                CompareVersions();
             }
         }
 
@@ -237,7 +237,7 @@ namespace Steam_Desktop_Authenticator
                 {
                     manifest.RemoveAccount(currentAccount, false);
                     MessageBox.Show("Account removed from manifest.\nYou can now move its maFile to another computer and import it using the File menu.", "Remove from manifest");
-                    loadAccountsList();
+                    LoadAccountsList();
                 }
             }
         }
@@ -251,14 +251,14 @@ namespace Steam_Desktop_Authenticator
         {
             var currentImport_maFile_Form = new ImportAccountForm();
             currentImport_maFile_Form.ShowDialog();
-            loadAccountsList();
+            LoadAccountsList();
         }
 
         private void menuSettings_Click(object sender, EventArgs e)
         {
             new SettingsForm().ShowDialog();
             manifest = Manifest.GetManifest(true);
-            loadSettings();
+            LoadSettings();
         }
 
         private async void menuDeactivateAuthenticator_Click(object sender, EventArgs e)
@@ -324,7 +324,7 @@ namespace Steam_Desktop_Authenticator
                 {
                     MessageBox.Show(String.Format("Steam Guard {0}. maFile will be deleted after hitting okay. If you need to make a backup, now's the time.", (scheme == 2 ? "removed completely" : "switched to emails")));
                     this.manifest.RemoveAccount(currentAccount);
-                    this.loadAccountsList();
+                    this.LoadAccountsList();
                 }
                 else
                 {
@@ -387,7 +387,7 @@ namespace Steam_Desktop_Authenticator
                 {
                     trayAccountList.Text = account.AccountName;
                     currentAccount = account;
-                    loadAccountInfo();
+                    LoadAccountInfo();
                     break;
                 }
             }
@@ -395,7 +395,7 @@ namespace Steam_Desktop_Authenticator
 
         private void txtAccSearch_TextChanged(object sender, EventArgs e)
         {
-            string[] names = [.. getAllNames().Where(IsFilter)];
+            string[] names = [.. GetAllNames().Where(IsFilter)];
 
             listAccounts.Items.Clear();
             listAccounts.Items.AddRange(names);
@@ -416,7 +416,7 @@ namespace Steam_Desktop_Authenticator
             currentSteamChunk = steamTime / 30L;
             int secondsUntilChange = (int)(steamTime - (currentSteamChunk * 30L));
 
-            loadAccountInfo();
+            LoadAccountInfo();
             if (currentAccount != null)
             {
                 pbTimeout.Value = 30 - secondsUntilChange;
@@ -536,7 +536,7 @@ namespace Steam_Desktop_Authenticator
         /// <summary>
         /// Load UI with the current account info, this is run every second
         /// </summary>
-        private void loadAccountInfo()
+        private void LoadAccountInfo()
         {
             if (currentAccount != null && steamTime != 0)
             {
@@ -549,7 +549,7 @@ namespace Steam_Desktop_Authenticator
         /// <summary>
         /// Decrypts files and populates list UI with accounts
         /// </summary>
-        private void loadAccountsList()
+        private void LoadAccountsList()
         {
             currentAccount = null;
 
@@ -587,7 +587,7 @@ namespace Steam_Desktop_Authenticator
                 {
                     int to = listAccounts.SelectedIndex - (e.KeyCode == Keys.Up ? 1 : -1);
                     manifest.MoveEntry(listAccounts.SelectedIndex, to);
-                    loadAccountsList();
+                    LoadAccountsList();
                 }
                 return;
             }
@@ -628,11 +628,11 @@ namespace Steam_Desktop_Authenticator
             }
             else
             {
-                return f.Contains(txtAccSearch.Text.ToLower());
+                return f.Contains(txtAccSearch.Text, StringComparison.CurrentCultureIgnoreCase);
             }
         }
 
-        private string[] getAllNames()
+        private string[] GetAllNames()
         {
             string[] itemArray = new string[allAccounts.Length];
             for (int i = 0; i < itemArray.Length; i++)
@@ -642,7 +642,7 @@ namespace Steam_Desktop_Authenticator
             return itemArray;
         }
 
-        private void loadSettings()
+        private void LoadSettings()
         {
             timerTradesPopup.Enabled = manifest.PeriodicChecking;
             timerTradesPopup.Interval = manifest.PeriodicCheckingInterval * 1000;
@@ -691,11 +691,11 @@ namespace Steam_Desktop_Authenticator
             newVersion = new Version(latestVersion);
             currentVersion = new Version(Application.ProductVersion);
 
-            compareVersions();
+            CompareVersions();
         }
 
 
-        private void compareVersions()
+        private void CompareVersions()
         {
             if (newVersion > currentVersion)
             {
