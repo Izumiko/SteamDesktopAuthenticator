@@ -19,14 +19,14 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           submodules: true
 
-      - name: Setup .NET 8
+      - name: Setup .NET 10
         uses: actions/setup-dotnet@v5
         with:
-          dotnet-version: '8'
+          dotnet-version: '10'
 
       - name: Restore dependencies
         run: dotnet restore "Steam Desktop Authenticator.sln"
@@ -51,6 +51,6 @@ jobs:
           body: |
             🧪 Automated nightly build. This release is updated frequently and may be unstable.
 
-            **重要:** 运行此程序前，您必须先在您的 Windows 电脑上安装 [.NET 8 Desktop Runtime](https://dotnet.microsoft.com/download/dotnet/8.0/runtime?runtime=desktop)。
+            **重要:** 运行此程序前，您必须先在您的 Windows 电脑上安装 [.NET 10 Desktop Runtime](https://dotnet.microsoft.com/download/dotnet/10.0/runtime?runtime=desktop)。
           prerelease: true
           files: SDA-nightly.zip

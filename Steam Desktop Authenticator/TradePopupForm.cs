@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using System.ComponentModel;
 
 namespace Steam_Desktop_Authenticator
 {
@@ -18,12 +19,14 @@ namespace Steam_Desktop_Authenticator
             lblStatus.Text = "";
         }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public SteamGuardAccount Account
         {
             get { return acc; }
             set { acc = value; lblAccount.Text = acc.AccountName; }
         }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public Confirmation[] Confirmations
         {
             get { return [.. confirms]; }
